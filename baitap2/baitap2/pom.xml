@@ -8,10 +8,10 @@
 		<version>3.3.3</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>baitap1</groupId>
-	<artifactId>baitap1</artifactId>
+	<groupId>baitap2</groupId>
+	<artifactId>baitap2</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>baitap1</name>
+	<name>baitap2</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
 	<licenses>
@@ -44,7 +44,6 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		
 	</dependencies>
 
 	<build>
