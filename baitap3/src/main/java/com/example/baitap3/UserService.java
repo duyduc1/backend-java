@@ -17,4 +17,8 @@ public class UserService {
     public List<UserModel> getAllUsers() {
         return userRepository.findAll();
     }
+
+    public UserModel getUserById(int id) {
+        return userRepository.findById(id).orElse(null);  // Ensure this method is correct
+    }
 }
