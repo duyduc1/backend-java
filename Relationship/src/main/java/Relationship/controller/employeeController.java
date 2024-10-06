@@ -61,7 +61,4 @@ public class employeeController {
         employeeSerivce.deleteEmployee(id);
         return "redirect:/getemployee";
     }
-
-
-
 }

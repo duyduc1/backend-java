@@ -6,7 +6,7 @@
 </head>
 <body>
 <form th:action="@{/updateemployee/{id} (id = ${employee.id})}" th:object="${employee}" method="post">
-  <h1>Chỉnh sửa thông tin</h1>
+  <h1>Chỉnh sửa thông tin nhân viên</h1>
   <div>
     <input type="text" id="username" th:field="*{username}" placeholder="Nhập tên nhân viên">
   </div>
