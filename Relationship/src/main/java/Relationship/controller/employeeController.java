@@ -1,6 +1,7 @@
 package Relationship.controller;
 
 import Relationship.entity.Employee;
+import Relationship.service.CompanyService;
 import Relationship.service.EmployeeSerivce;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,9 +17,12 @@ import java.util.List;
 public class employeeController {
     @Autowired
     private EmployeeSerivce employeeSerivce;
+    @Autowired
+    private CompanyService companyService;
 
     @GetMapping("/addemployee")
     public String addEmployee(Model model){
+        model.addAttribute("company" , companyService.getAllCompany());
         model.addAttribute("employee" , new Employee());
         return "addemployee";
     }

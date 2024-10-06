@@ -14,4 +14,11 @@ public class Employee {
     private String username;
     private String email;
     private int numberphone;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "company_id" , referencedColumnName = "id" , nullable = false)
+    private Company company;
+
+    @Column(name = "companyName")
+    private String companyName;
 }

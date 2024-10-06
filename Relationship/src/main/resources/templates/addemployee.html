@@ -17,6 +17,14 @@
         <input type="number" th:field="*{numberphone}" placeholder="Số điện thoại">
     </div>
 
+    <div>
+        <div>Công ty</div>
+        <select th:field="*{company.id}" required>
+            <option value="" disabled selected>Chọn công ty</option>
+            <option th:each="company : ${company}" th:value="${company.id}" th:text="${company.companyName}"></option>
+        </select>
+    </div>
+
     <button type="submit">Lưu thông tin</button>
 </form>
 </body>

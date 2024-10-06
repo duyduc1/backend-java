@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CompanyService {
@@ -18,6 +19,11 @@ public class CompanyService {
 
     public Company getCompanyById(Long id){
         return companyRepo.findById(id).orElse(null);
+    }
+
+    public Company findById(Long id){
+        Optional<Company> companyOptional = companyRepo.findById(id);
+        return companyOptional.orElse(null);
     }
 
     public void saveCompany(Company company){

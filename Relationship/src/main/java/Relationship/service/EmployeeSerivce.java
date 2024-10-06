@@ -1,5 +1,6 @@
 package Relationship.service;
 
+import Relationship.entity.Company;
 import Relationship.entity.Employee;
 import Relationship.repository.EmployeeRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,9 @@ public class EmployeeSerivce {
     @Autowired
     private EmployeeRepo employeeRepo;
 
+    @Autowired
+    private CompanyService companyService;
+
     public List<Employee> getAllEmployee(){
         return employeeRepo.findAll();
     }
@@ -20,8 +24,11 @@ public class EmployeeSerivce {
         return employeeRepo.findById(id).orElse(null);
     }
 
-    public void saveEmployee(Employee employee){
-        employeeRepo.save(employee);
+    public Employee saveEmployee(Employee employee){
+        Company company = companyService.findById(employee.getCompany().getId());
+        employee.setCompany(company);
+        employee.setCompanyName(company.getCompanyName());
+        return employeeRepo.save(employee);
     }
 
     public void updateEmployee(Long id , Employee updateEmployee){
