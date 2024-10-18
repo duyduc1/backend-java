@@ -3,6 +3,8 @@ package Relationship.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.Set;
+
 @Entity
 @Table(name = "employee")
 @Data
@@ -15,10 +17,16 @@ public class Employee {
     private String email;
     private int numberphone;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "company_id" , referencedColumnName = "id" , nullable = false)
-    private Company company;
+    @ManyToMany
+    @JoinTable(
+            name = "employee_company",
+            joinColumns = @JoinColumn(name = "employee_id"),
+            inverseJoinColumns = @JoinColumn(name = "company_id")
+    )
+    private Set<Company> companies;
 
-    @Column(name = "companyName")
     private String companyName;
+
+
+
 }

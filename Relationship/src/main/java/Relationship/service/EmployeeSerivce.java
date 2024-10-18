@@ -6,7 +6,9 @@ import Relationship.repository.EmployeeRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class EmployeeSerivce {
@@ -25,9 +27,15 @@ public class EmployeeSerivce {
     }
 
     public Employee saveEmployee(Employee employee){
-        Company company = companyService.findById(employee.getCompany().getId());
-        employee.setCompany(company);
-        employee.setCompanyName(company.getCompanyName());
+        Set<Company> companies = new HashSet<>();
+        for(Company company : employee.getCompanies()){
+            Company foundCpmpany = companyService.findById(company.getId());
+            if(foundCpmpany != null){
+                companies.add(foundCpmpany);
+            }
+        }
+        employee.setCompanies(companies);
+        employee.setCompanyName(companies.iterator().next().getCompanyName());
         return employeeRepo.save(employee);
     }
 
@@ -36,8 +44,17 @@ public class EmployeeSerivce {
         employees.setUsername(updateEmployee.getUsername());
         employees.setEmail(updateEmployee.getEmail());
         employees.setNumberphone(updateEmployee.getNumberphone());
+        Set<Company> updatedCompanies = new HashSet<>();
+        for (Company company : updateEmployee.getCompanies()) {
+            Company foundCompany = companyService.findById(company.getId());
+            if (foundCompany != null) {
+                updatedCompanies.add(foundCompany);
+            }
+        }
+        employees.setCompanies(updatedCompanies);
         employeeRepo.save(employees);
     }
+
 
     public void deleteEmployee(Long id){
         employeeRepo.deleteById(id);

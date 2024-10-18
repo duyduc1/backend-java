@@ -3,7 +3,7 @@ package Relationship.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "company")
@@ -17,10 +17,10 @@ public class Company {
     @Column(nullable = false)
     private String companyName;
 
-    @OneToMany(mappedBy = "company" , cascade = CascadeType.ALL)
-    private List<Employee> employees;
+    @ManyToMany(mappedBy = "companies")
+    private Set<Employee> employees;
 
-    public List<Employee> getEmployees() {
+    public Set<Employee> getEmployees() {
         return employees;
     }
 }

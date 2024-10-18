@@ -17,15 +17,18 @@ import java.util.List;
 public class employeeController {
     @Autowired
     private EmployeeSerivce employeeSerivce;
+
     @Autowired
     private CompanyService companyService;
 
+
     @GetMapping("/addemployee")
-    public String addEmployee(Model model){
-        model.addAttribute("company" , companyService.getAllCompany());
-        model.addAttribute("employee" , new Employee());
+    public String showAddEmployeeForm(Model model) {
+        model.addAttribute("employee", new Employee());
+        model.addAttribute("companyList", companyService.getAllCompany());
         return "addemployee";
-    }
+}
+
 
     @GetMapping("/getemployee")
     public String getEmployee(Model model){
