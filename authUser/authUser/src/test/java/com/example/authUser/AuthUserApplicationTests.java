@@ -1,10 +1,10 @@
-package baitap1.baitap1;
+package com.example.authUser;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class Baitap1ApplicationTests {
+class AuthUserApplicationTests {
 
 	@Test
 	void contextLoads() {
