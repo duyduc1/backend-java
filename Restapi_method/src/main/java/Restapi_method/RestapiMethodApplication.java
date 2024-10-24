@@ -1,13 +1,13 @@
-package baitap1.baitap1;
+package Restapi_method;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Baitap1Application {
+public class RestapiMethodApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(Baitap1Application.class, args);
+		SpringApplication.run(RestapiMethodApplication.class, args);
 	}
 
 }
