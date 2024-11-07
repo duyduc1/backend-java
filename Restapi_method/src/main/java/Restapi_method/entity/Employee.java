@@ -17,11 +17,4 @@ public class Employee {
     private Integer phoneEmployee;
     private String emailEmployee;
 
-    @ManyToMany
-    @JoinTable(
-            name = "employee_company",
-            joinColumns = @JoinColumn(name = "employee_id"),
-            inverseJoinColumns = @JoinColumn(name = "company_id")
-    )
-    private List<Company> companyList; // This field represents the many-to-many relationship with Company
 }

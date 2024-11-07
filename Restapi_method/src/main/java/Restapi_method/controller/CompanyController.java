@@ -34,9 +34,9 @@ public class CompanyController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<String> updateCompany(@PathVariable("id") Long id, @RequestBody Company company){
+    public String updateCompany(@PathVariable("id") Long id, @RequestBody Company company){
         companyService.updatedCompany(id,company);
-        return ResponseEntity.ok("Cập nhật thành công");
+        return "Cập nhật thành công ";
     }
 
     @DeleteMapping("/{id}")

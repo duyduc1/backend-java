@@ -1,0 +1,39 @@
+version: '3'
+services:
+
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 2804
+      MYSQL_DATABASE: restapi
+      MYSQL_USER: duc
+      MYSQL_PASSWORD: 2804
+    ports:
+      - 3307:3306
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - app_network
+
+  spring-boot-app:
+    restart: always
+    build: .
+    ports:
+      - 8084:8083
+    depends_on:
+      - mysql
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/restapi
+      SPRING_DATASOURCE_USERNAME: duc
+      SPRING_DATASOURCE_PASSWORD: 2804
+    networks:
+      - app_network
+
+volumes:
+  mysql_data:
+
+networks:
+  app_network:
+    driver: bridge
